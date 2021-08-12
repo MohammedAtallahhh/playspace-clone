@@ -18,7 +18,6 @@ class Navbar extends Component {
 
     const { items, button } = this.props;
 
-    console.log(items);
     return (
       <N.Nav>
         <div className="container">

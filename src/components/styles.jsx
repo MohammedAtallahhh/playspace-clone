@@ -1,7 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 // import { BsList } from "react-icons/bs";
 import { BsTextRight } from "react-icons/bs";
 import squares from "../assets/squares.svg";
+import window from "../assets/window.png";
 
 export const Nav = {
   Nav: styled.nav`
@@ -139,6 +140,7 @@ export const Hero = {
     margin-bottom: 2rem;
     /* font-weight: 900; */
     color: var(--text-white-1);
+    letter-spacing: -2px;
   `,
 
   ContentText: styled.p`
@@ -169,6 +171,95 @@ export const Hero = {
   `,
 };
 
+// ----------------------Features
+export const Features = {
+  Wrapper: styled.section`
+    background: var(--bg-white-1);
+    padding: 10rem 0;
+
+    > .container {
+    }
+  `,
+
+  Content: styled.div`
+    font-size: clamp(2rem, 2.3rem + 4vw, 6rem);
+    text-align: center;
+    margin-bottom: 8rem;
+
+    > h2 {
+      font-size: 1em;
+      margin-bottom: 2rem;
+      line-height: 1em;
+      letter-spacing: -2px;
+    }
+
+    > p {
+      font-size: 0.5em;
+      color: var(--text-black-4);
+    }
+  `,
+
+  TabsWrapper: styled.div`
+    .tabs {
+      display: flex;
+      width: 100%;
+      max-width: 700px;
+      justify-content: center;
+      margin-bottom: 5rem;
+      margin-inline: auto;
+      border-radius: 1000rem;
+      box-shadow: 0.4rem 0.4rem 1.3rem rgb(0 0 0 / 20%);
+      list-style: none;
+
+      @media (max-width: 650px) {
+        box-shadow: none;
+        display: block;
+      }
+
+      .tab {
+        font-size: calc(1.2rem + 0.8vw);
+        font-weight: 500;
+        padding: 0.8em;
+        border-radius: 10rem;
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+
+        &.active {
+          background: black;
+          color: var(--text-white-1);
+        }
+
+        @media (max-width: 650px) {
+          max-width: 300px;
+          box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.15);
+
+          &,
+          &:not(:last-child) {
+            margin: 0 auto 2rem;
+          }
+        }
+      }
+    }
+    .tabs__content .content {
+      img {
+        filter: drop-shadow(0.4rem 0.7rem 1.5rem rgba(0, 0, 0, 0.15));
+        width: 100%;
+        max-width: 850px;
+        margin: 0 auto;
+        display: block;
+        opacity: 0;
+        animation: fade 0.5s forwards;
+      }
+    }
+  `,
+};
+
+// ----------------Helpers
 export const Button = styled.button`
   border: none;
   outline: none;

@@ -16,6 +16,7 @@ html {
   --text-black-1: hsl(0, 0%, 5%);
   --text-black-2: hsl(0, 0%, 12%);
   --text-black-3: hsl(0, 0%, 20%);
+  --text-black-4: hsl(0, 0%, 30%);
 
   --bg-white-1: hsl(0, 0%, 100%);
 
@@ -62,4 +63,15 @@ button.hero--btn:hover,
 button.hero--btn:focus {
   background: transparent;
   color: white;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
 }
