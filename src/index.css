@@ -8,10 +8,10 @@
 html {
   font-size: 10px;
 
-  --text-white-1: hsl(0, 0%, 95%);
-  --text-white-2: hsl(0, 0%, 89%);
-  --text-white-3: hsl(0, 0%, 78%);
-  --text-white-3: hsl(0, 0%, 70%);
+  --text-white-1: hsl(0, 0%, 98%);
+  --text-white-2: hsl(0, 0%, 95%);
+  --text-white-3: hsl(0, 0%, 88%);
+  --text-white-3: hsl(0, 0%, 80%);
 
   --text-black-1: hsl(0, 0%, 5%);
   --text-black-2: hsl(0, 0%, 12%);
@@ -22,6 +22,10 @@ html {
 
   --bg-blue: hsl(233, 100%, 62%);
   --bg-blue-2: hsl(233, 90%, 52%);
+
+  --primary-yellow: hsl(40, 97%, 65%);
+  --primary-yellow-2: hsl(40, 96%, 72%);
+  --primary-yellow-3: hsl(40, 95%, 76%);
 }
 
 body {
@@ -74,4 +78,9 @@ video {
   to {
     opacity: 1;
   }
+}
+
+h1,
+h2 {
+  letter-spacing: -2px;
 }

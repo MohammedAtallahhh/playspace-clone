@@ -4,6 +4,7 @@ import { BsTextRight } from "react-icons/bs";
 import squares from "../assets/squares.svg";
 import window from "../assets/window.png";
 
+// -------------Navbar
 export const Nav = {
   Nav: styled.nav`
     background: transparent;
@@ -113,6 +114,7 @@ export const Nav = {
   `,
 };
 
+// ------------------ Hero
 export const Hero = {
   Hero: styled.main`
     --padding: 10vh;
@@ -144,7 +146,7 @@ export const Hero = {
   `,
 
   ContentText: styled.p`
-    color: var(--text-white-2);
+    color: var(--text-white-3);
     font-size: 0.5em;
     font-weight: 400;
     max-width: 40ch;
@@ -246,12 +248,15 @@ export const Features = {
       }
     }
     .tabs__content .content {
+      display: none;
+      &.active {
+        display: block;
+      }
       img {
         filter: drop-shadow(0.4rem 0.7rem 1.5rem rgba(0, 0, 0, 0.15));
         width: 100%;
         max-width: 850px;
         margin: 0 auto;
-        display: block;
         opacity: 0;
         animation: fade 0.5s forwards;
       }
@@ -295,3 +300,64 @@ export const Button = styled.button`
     }
   }
 `;
+
+// --------------------Music
+export const Music = {
+  Wrapper: styled.section`
+    background: var(--primary-yellow);
+    padding: 8rem 0;
+
+    @media (min-width: 768px) {
+      padding: 15rem 0;
+    }
+
+    > .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      > * {
+        flex-basis: 100%;
+
+        @media (min-width: 768px) {
+          flex-basis: 45%;
+        }
+      }
+    }
+
+    .content {
+      text-align: center;
+      margin-bottom: 5rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+        margin-right: 5rem;
+      }
+
+      color: var(--text-white-1);
+      .title {
+        font-size: clamp(3rem, 2.8rem + 3vw, 6rem);
+        line-height: 1em;
+        margin-bottom: 2rem;
+        /* font-weight: 800; */
+      }
+
+      p {
+        color: var(--text-white-2);
+        font-size: clamp(1.4rem, 1rem + 2vw, 2.8rem);
+      }
+    }
+
+    .image {
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: calc(300px + 7vw);
+        border-radius: 1rem;
+        filter: drop-shadow(0.5rem 0.8rem 2rem hsla(50, 100%, 25%, 0.5));
+      }
+    }
+  `,
+};
