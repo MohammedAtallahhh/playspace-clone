@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Features as F } from "./styles";
+import { Features as F, Title, Text } from "./styles";
 
 // import notepad from "../assets/notepad_video.mp4";
 import window from "../assets/window.png";
@@ -25,12 +25,12 @@ function Features() {
     <F.Wrapper>
       <div className="container">
         <F.Content className="content">
-          <h2 className="content--title">Get on the same page, fast.</h2>
+          <Title color="var(--text-black-1)">Get on the same page, fast.</Title>
 
-          <p className="content--text">
+          <Text color="var(--text-black-3)">
             Each room is loaded with collaborative surfaces so you can quickly
             take notes, capture to-dos, and share ideas.
-          </p>
+          </Text>
         </F.Content>
 
         <F.TabsWrapper>

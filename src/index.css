@@ -9,7 +9,7 @@ html {
   font-size: 10px;
 
   --text-white-1: hsl(0, 0%, 98%);
-  --text-white-2: hsl(0, 0%, 95%);
+  --text-white-2: hsl(0, 0%, 94%);
   --text-white-3: hsl(0, 0%, 88%);
   --text-white-3: hsl(0, 0%, 80%);
 
@@ -57,8 +57,8 @@ button.hero--btn {
   display: block;
   background: var(--text-white-1);
   color: var(--text-black-1);
-  padding: 0.8em 1.5em;
-  font-size: calc(1.2rem + 0.7vw);
+  padding: 0.7em 1.5em;
+  font-size: calc(1.2rem + 0.5vw);
   margin: 3rem auto;
   border: 2px solid var(--text-white-1);
 }
@@ -83,4 +83,8 @@ video {
 h1,
 h2 {
   letter-spacing: -2px;
+}
+
+p {
+  font-weight: 300;
 }

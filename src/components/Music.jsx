@@ -1,5 +1,5 @@
 import React from "react";
-import { Music as S } from "./styles";
+import { Music as S, Title, Text } from "./styles";
 import audioImage from "../assets/audio.png";
 
 function Music() {
@@ -7,11 +7,11 @@ function Music() {
     <S.Wrapper>
       <div className="container">
         <div className="content">
-          <h2 className="title">Turn up the volume.</h2>
-          <p>
+          <Title color="var(--text-white-1)">Turn up the volume.</Title>
+          <Text color="var(--text-white-1)">
             Fill the room with music to set the tone and get the creative energy
             flowing.
-          </p>
+          </Text>
         </div>
 
         <div className="image">

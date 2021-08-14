@@ -2,7 +2,7 @@ import styled from "styled-components";
 // import { BsList } from "react-icons/bs";
 import { BsTextRight } from "react-icons/bs";
 import squares from "../assets/squares.svg";
-import window from "../assets/window.png";
+import IpadImage from "../assets/ipad.png";
 
 // -------------Navbar
 export const Nav = {
@@ -146,10 +146,10 @@ export const Hero = {
   `,
 
   ContentText: styled.p`
-    color: var(--text-white-3);
+    color: var(--text-white-2);
     font-size: 0.5em;
-    font-weight: 400;
-    max-width: 40ch;
+    font-weight: 300;
+    max-width: 45ch;
     margin: 2rem auto;
   `,
 
@@ -184,21 +184,8 @@ export const Features = {
   `,
 
   Content: styled.div`
-    font-size: clamp(2rem, 2.3rem + 4vw, 6rem);
     text-align: center;
-    margin-bottom: 8rem;
-
-    > h2 {
-      font-size: 1em;
-      margin-bottom: 2rem;
-      line-height: 1em;
-      letter-spacing: -2px;
-    }
-
-    > p {
-      font-size: 0.5em;
-      color: var(--text-black-4);
-    }
+    margin-bottom: 5rem;
   `,
 
   TabsWrapper: styled.div`
@@ -250,7 +237,7 @@ export const Features = {
     .tabs__content .content {
       display: none;
       &.active {
-        display: block;
+        display: flex;
       }
       img {
         filter: drop-shadow(0.4rem 0.7rem 1.5rem rgba(0, 0, 0, 0.15));
@@ -264,12 +251,129 @@ export const Features = {
   `,
 };
 
+// --------------------Music
+export const Music = {
+  Wrapper: styled.section`
+    background: var(--primary-yellow);
+    padding: 8rem 0;
+
+    @media (min-width: 768px) {
+      padding: 15rem 0;
+    }
+
+    > .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      > * {
+        flex-basis: 100%;
+
+        @media (min-width: 768px) {
+          flex-basis: 45%;
+        }
+      }
+    }
+
+    .content {
+      text-align: center;
+      margin-bottom: 5rem;
+      color: var(--text-white-1);
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+        margin-right: 5rem;
+      }
+    }
+
+    .image {
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: calc(300px + 7vw);
+        border-radius: 1rem;
+        filter: drop-shadow(0.5rem 0.8rem 2rem hsla(50, 100%, 25%, 0.5));
+      }
+    }
+  `,
+};
+
+// ---------------------Ipad
+export const Ipad = {
+  Wrapper: styled.section`
+    padding: 10rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (min-width: 850px) {
+      padding: 5rem 0 10rem;
+      align-items: flex-end;
+    }
+
+    .content,
+    .image {
+      flex-basis: 100%;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 5rem;
+      padding: 0 2rem;
+
+      p {
+        margin-inline: unset;
+      }
+    }
+
+    .image {
+      min-height: 400px;
+      background-image: url(${IpadImage});
+      background-repeat: no-repeat;
+      background-position: 100% 100%;
+      background-size: 700px;
+
+      @media (min-width: 550px) {
+        min-height: 700px;
+        background-position: 100% 30%;
+        background-size: 1000px;
+      }
+
+      @media (min-width: 700px) {
+        min-height: 900px;
+        background-position: 100% -10%;
+        background-size: 1200px;
+      }
+    }
+
+    @media (min-width: 850px) {
+      .image {
+        order: 1;
+        flex-basis: 53%;
+        background-position: 100% 30%;
+        background-size: 1080px;
+        min-height: 600px;
+        top: 5rem;
+      }
+
+      .content {
+        order: 2;
+        flex-basis: 45%;
+        margin-bottom: 0;
+      }
+    }
+  `,
+};
+
 // ----------------Helpers
 export const Button = styled.button`
   border: none;
   outline: none;
   letter-spacing: 1px;
-  padding: 0.8em 1.7em;
+  padding: 0.6em 1.5em;
   border-radius: 10rem;
   cursor: pointer;
   font-size: 1.3rem;
@@ -301,63 +405,17 @@ export const Button = styled.button`
   }
 `;
 
-// --------------------Music
-export const Music = {
-  Wrapper: styled.section`
-    background: var(--primary-yellow);
-    padding: 8rem 0;
+export const Title = styled.h2`
+  font-size: clamp(3rem, 2.8rem + 5vw, 5.5rem);
+  line-height: 1em;
+  color: ${(props) => props.color};
+`;
 
-    @media (min-width: 768px) {
-      padding: 15rem 0;
-    }
-
-    > .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-
-      > * {
-        flex-basis: 100%;
-
-        @media (min-width: 768px) {
-          flex-basis: 45%;
-        }
-      }
-    }
-
-    .content {
-      text-align: center;
-      margin-bottom: 5rem;
-
-      @media (min-width: 768px) {
-        margin-bottom: 0;
-        margin-right: 5rem;
-      }
-
-      color: var(--text-white-1);
-      .title {
-        font-size: clamp(3rem, 2.8rem + 3vw, 6rem);
-        line-height: 1em;
-        margin-bottom: 2rem;
-        /* font-weight: 800; */
-      }
-
-      p {
-        color: var(--text-white-2);
-        font-size: clamp(1.4rem, 1rem + 2vw, 2.8rem);
-      }
-    }
-
-    .image {
-      display: flex;
-      justify-content: center;
-
-      img {
-        width: calc(300px + 7vw);
-        border-radius: 1rem;
-        filter: drop-shadow(0.5rem 0.8rem 2rem hsla(50, 100%, 25%, 0.5));
-      }
-    }
-  `,
-};
+export const Text = styled.p`
+  line-height: 1.4;
+  font-size: clamp(1.8rem, 1.6rem + 1.5vw, 3rem);
+  font-weight: 400;
+  max-width: 45ch;
+  margin: 2rem auto;
+  color: ${({ color }) => color || "black"};
+`;

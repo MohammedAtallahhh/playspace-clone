@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import Music from "./components/Music";
+import Ipad from "./components/Ipad";
 
 function App() {
   const links = ["sign in"];
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <Features />
       <Music />
+      <Ipad />
     </>
   );
 }
