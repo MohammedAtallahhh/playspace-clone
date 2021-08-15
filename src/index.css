@@ -26,6 +26,8 @@ html {
   --primary-yellow: hsl(40, 97%, 65%);
   --primary-yellow-2: hsl(40, 96%, 72%);
   --primary-yellow-3: hsl(40, 95%, 76%);
+
+  --primary-red: hsl(9, 99%, 66%);
 }
 
 body {

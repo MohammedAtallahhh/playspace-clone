@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import Music from "./components/Music";
+import Rooms from "./components/Rooms";
 import Ipad from "./components/Ipad";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <Features />
       <Music />
+      <Rooms />
       <Ipad />
     </>
   );

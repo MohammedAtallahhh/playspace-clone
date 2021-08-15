@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { BsTextRight } from "react-icons/bs";
 import squares from "../assets/squares.svg";
 import IpadImage from "../assets/ipad.png";
+import RoomsImage from "../assets/talk.png";
+import Wave from "../assets/wave.svg";
 
 // -------------Navbar
 export const Nav = {
@@ -170,6 +172,7 @@ export const Hero = {
     width: 100%;
     max-width: 800px;
     z-index: 2;
+    border-radius: 1.5rem;
   `,
 };
 
@@ -292,9 +295,68 @@ export const Music = {
       justify-content: center;
 
       img {
-        width: calc(300px + 7vw);
+        width: calc(300px + 17vw);
         border-radius: 1rem;
         filter: drop-shadow(0.5rem 0.8rem 2rem hsla(50, 100%, 25%, 0.5));
+      }
+    }
+  `,
+};
+
+//-----------------Rooms
+export const Rooms = {
+  Wrapper: styled.section`
+    background: var(--primary-red);
+    padding: 8rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .content {
+      padding: 0 2rem;
+      margin-bottom: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-basis: 100%;
+
+      @media (min-width: 1200px) {
+        max-width: 800px;
+        margin-left: auto;
+        padding: 0 0 0 0;
+      }
+    }
+
+    .image {
+      background: url(${RoomsImage}) no-repeat 13% 45%/ 1000px;
+      min-height: 450px;
+      flex-basis: 100%;
+
+      @media (min-width: 580px) {
+        background: url(${RoomsImage}) no-repeat 13% 45%/ 1300px;
+        min-height: 600px;
+      }
+    }
+
+    @media (min-width: 930px) {
+      .content,
+      .image {
+        flex-basis: 50%;
+      }
+
+      .content {
+        text-align: left;
+        padding: 0 0 0 5rem;
+      }
+
+      .content-inner {
+        margin-top: -10rem;
+      }
+
+      .image {
+        min-height: 800px;
+        background-size: 1700px;
       }
     }
   `,
@@ -309,7 +371,7 @@ export const Ipad = {
     justify-content: space-between;
 
     @media (min-width: 850px) {
-      padding: 5rem 0 10rem;
+      padding: 5rem 0 13rem;
       align-items: flex-end;
     }
 
@@ -368,6 +430,10 @@ export const Ipad = {
   `,
 };
 
+export const Action = {
+  Wrapper: styled.section``,
+};
+
 // ----------------Helpers
 export const Button = styled.button`
   border: none;
@@ -416,6 +482,6 @@ export const Text = styled.p`
   font-size: clamp(1.8rem, 1.6rem + 1.5vw, 3rem);
   font-weight: 400;
   max-width: 45ch;
-  margin: 2rem auto;
+  margin: 2rem 0;
   color: ${({ color }) => color || "black"};
 `;
