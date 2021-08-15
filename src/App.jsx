@@ -4,6 +4,8 @@ import Features from "./components/Features";
 import Music from "./components/Music";
 import Rooms from "./components/Rooms";
 import Ipad from "./components/Ipad";
+import Action from "./components/Action";
+import Footer from "./components/Footer";
 
 function App() {
   const links = ["sign in"];
@@ -15,6 +17,8 @@ function App() {
       <Music />
       <Rooms />
       <Ipad />
+      <Action />
+      <Footer />
     </>
   );
 }

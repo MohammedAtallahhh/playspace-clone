@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 // import { BsList } from "react-icons/bs";
 import { BsTextRight } from "react-icons/bs";
 import squares from "../assets/squares.svg";
 import IpadImage from "../assets/ipad.png";
 import RoomsImage from "../assets/talk.png";
-import Wave from "../assets/wave.svg";
+// import Wave from "../assets/wave.svg";
 
 // -------------Navbar
 export const Nav = {
@@ -24,6 +24,20 @@ export const Nav = {
 
     @media (min-width: 768px) {
       height: 13vh;
+    }
+
+    button {
+      @media (max-width: 767px) {
+        border: 1px solid hsl(233, 100%, 62%);
+        color: hsl(233, 100%, 62%);
+        margin-top: 2rem;
+        margin-left: 0;
+
+        &:hover {
+          background-color: hsl(233, 100%, 62%);
+          color: white;
+        }
+      }
     }
   `,
 
@@ -120,7 +134,7 @@ export const Nav = {
 export const Hero = {
   Hero: styled.main`
     --padding: 10vh;
-    background-color: var(--bg-blue);
+    background-color: var(--primary-blue);
     padding-top: var(--padding);
     overflow: hidden;
 
@@ -430,45 +444,127 @@ export const Ipad = {
   `,
 };
 
+// -------------------Action
 export const Action = {
-  Wrapper: styled.section``,
+  Wrapper: styled.section`
+    background: var(--primary-blue);
+    padding: 20rem 0;
+
+    @media (min-width: 600px) {
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url(${squares}) no-repeat center / contain;
+        opacity: 0.7;
+      }
+    }
+
+    @media (min-width: 991px) {
+      padding: 33rem 0;
+    }
+
+    .container {
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      text-align: center;
+      max-width: 800px;
+    }
+  `,
+};
+
+// -----------------------Footer
+export const Footer = {
+  Wrapper: styled.footer`
+    padding: 5rem 0;
+
+    .container,
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image {
+      margin-bottom: 5rem;
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      color: var(--text-black-3);
+    }
+
+    .footer--nav {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer--nav__item {
+      &:not(:last-child)::after {
+        content: ".";
+        position: absolute;
+        right: 0;
+        top: -3px;
+        transform: scale(2.2);
+      }
+    }
+
+    .footer--nav__link {
+      text-decoration: none;
+      color: var(--text-black-3);
+      padding: 1rem;
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+  `,
 };
 
 // ----------------Helpers
 export const Button = styled.button`
   border: none;
   outline: none;
-  letter-spacing: 1px;
-  padding: 0.6em 1.5em;
+  padding: 0.7em 1.5em;
   border-radius: 10rem;
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: ${({ small }) =>
+    small ? "1.6rem" : "clamp(1.8rem, 1.4rem + 1vw, 2.2rem)"};
   font-family: Poppins, sans-serif;
   font-weight: 400;
   margin-left: 1rem;
   margin-top: 0;
   transition: 250ms ease;
 
-  background: hsla(0, 0%, 100%, 0.15);
-  color: white;
+  ${(props) =>
+    props.primary
+      ? css`
+          background: white;
+          color: var(--text-black-1);
 
-  &:hover,
-  &:focus {
-    color: var(--text-black-1);
-    background-color: white;
-  }
+          &:hover,
+          &:focus {
+            box-shadow: 0.1em 0.2em 0.5em rgba(0, 0, 0, 0.1);
+          }
+        `
+      : css`
+          background: hsla(0, 0%, 100%, 0.15);
+          color: var(--text-white-1);
 
-  @media (max-width: 767px) {
-    border: 1px solid hsl(233, 100%, 62%);
-    color: hsl(233, 100%, 62%);
-    margin-top: 2rem;
-    margin-left: 0;
-
-    &:hover {
-      background-color: hsl(233, 100%, 62%);
-      color: white;
-    }
-  }
+          &:hover,
+          &:focus {
+            color: var(--text-black-1);
+            background-color: white;
+          }
+        `}
 `;
 
 export const Title = styled.h2`

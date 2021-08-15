@@ -12,7 +12,9 @@ function Hero() {
             Playspace rooms come with everything you need to work together from
             anywhere.
           </H.ContentText>
-          <Button className="hero--btn">join the waitlist</Button>
+          <Button primary size="big" className="hero--btn">
+            join the waitlist
+          </Button>
         </H.Content>
 
         <H.VideoContainer>

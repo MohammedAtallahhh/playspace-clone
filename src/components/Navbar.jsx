@@ -32,7 +32,7 @@ class Navbar extends Component {
               </N.Item>
             ))}
 
-            {button ? <Button>{button}</Button> : null}
+            {button ? <Button small>{button}</Button> : null}
           </N.List>
 
           <N.ToggleIcon onClick={this.HandleNavActive} />

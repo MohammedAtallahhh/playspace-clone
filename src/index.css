@@ -20,8 +20,8 @@ html {
 
   --bg-white-1: hsl(0, 0%, 100%);
 
-  --bg-blue: hsl(233, 100%, 62%);
-  --bg-blue-2: hsl(233, 90%, 52%);
+  --primary-blue: hsl(233, 100%, 62%);
+  --primary-blue-2: hsl(233, 90%, 52%);
 
   --primary-yellow: hsl(40, 97%, 65%);
   --primary-yellow-2: hsl(40, 96%, 72%);
@@ -53,22 +53,6 @@ code {
 
 a {
   font-family: Poppins, sans-serif;
-}
-
-button.hero--btn {
-  display: block;
-  background: var(--text-white-1);
-  color: var(--text-black-1);
-  padding: 0.7em 1.5em;
-  font-size: calc(1.2rem + 0.5vw);
-  margin: 3rem auto;
-  border: 2px solid var(--text-white-1);
-}
-
-button.hero--btn:hover,
-button.hero--btn:focus {
-  background: transparent;
-  color: white;
 }
 
 img,
