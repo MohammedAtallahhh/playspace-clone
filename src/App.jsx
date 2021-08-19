@@ -6,9 +6,13 @@ import Rooms from "./components/Rooms";
 import Ipad from "./components/Ipad";
 import Action from "./components/Action";
 import Footer from "./components/Footer";
+import { useEffect } from "react";
 
 function App() {
   const links = ["sign in"];
+
+
+
   return (
     <>
       <Navbar items={links} button="join the waitlist" />

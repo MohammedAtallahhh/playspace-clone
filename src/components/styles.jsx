@@ -11,9 +11,10 @@ export const Nav = {
   Nav: styled.nav`
     background: transparent;
     position: fixed;
-    z-index: 1000;
+    z-index: 10000;
     width: 100%;
     height: 8vh;
+    transition: 200ms;
 
     > .container {
       height: 100%;
@@ -22,8 +23,40 @@ export const Nav = {
       align-items: center;
     }
 
+    &.scrolled {
+      background: var(--light-blue);
+      height: 8vh;
+      box-shadow: 0 1rem 3rem -2rem rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 767px) {
+      &::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: hsla(220, 80%, 45%, 0.5);
+        display: none;
+        animation: 500ms 300ms ease fade forwards;
+      }
+
+      ${({ overlay }) =>
+        overlay
+          ? css`
+              background: var(--light-blue);
+              &::after {
+                display: block;
+              }
+            `
+          : ""}
+    }
+
     @media (min-width: 768px) {
       height: 13vh;
+
+      &::after {
+        display: none;
+      }
     }
 
     button {
@@ -48,18 +81,18 @@ export const Nav = {
 
   List: styled.ul`
     list-style: none;
-    position: absolute;
-    text-align: center;
-    top: 110%;
-    background-color: var(--bg-white-1);
+    position: fixed;
+    top: 8vh;
     right: 0;
-    width: 100%;
-    max-width: 600px;
+    left: 0;
+    text-align: center;
+    background-color: var(--bg-white-1);
     padding: 3rem;
     box-shadow: -0.5rem 0.5rem 1rem hsla(0, 0%, 15%, 0.2);
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 200ms cubic-bezier(0.25, 0.46, 0.45, 0.4);
+    user-select: none;
 
     &.active {
       transform: scaleY(1);
@@ -94,7 +127,7 @@ export const Nav = {
     cursor: pointer;
 
     &:hover {
-      color: var(--bg-blue-2);
+      color: var(--primary-blue);
     }
 
     @media (min-width: 768px) {
@@ -580,4 +613,20 @@ export const Text = styled.p`
   max-width: 45ch;
   margin: 2rem 0;
   color: ${({ color }) => color || "black"};
+`;
+
+export const Overlay = styled.div`
+  @media (max-width: 768px) {
+    position: fixed;
+    inset: 0;
+    top: 10vh;
+    background: hsla(0, 0%, 100%, 0.7);
+    display: none;
+    opacity: 0;
+    animation: fade 500ms ease forwards;
+
+    &.active {
+      display: block;
+    }
+  }
 `;

@@ -20,6 +20,7 @@ html {
 
   --bg-white-1: hsl(0, 0%, 100%);
 
+  --light-blue: hsl(233, 100%, 67%);
   --primary-blue: hsl(233, 100%, 62%);
   --primary-blue-2: hsl(233, 90%, 52%);
 
@@ -38,6 +39,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: 250ms;
+}
+
+@media (max-width: 767px) {
+  body.no-scroll {
+    overflow-y: hidden;
+  }
 }
 
 .container {
