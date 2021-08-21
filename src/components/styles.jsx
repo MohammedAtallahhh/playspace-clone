@@ -4,17 +4,27 @@ import { BsTextRight } from "react-icons/bs";
 import squares from "../assets/squares.svg";
 import IpadImage from "../assets/ipad.png";
 import RoomsImage from "../assets/talk.png";
+import { motion } from "framer-motion";
 // import Wave from "../assets/wave.svg";
 
 // -------------Navbar
 export const Nav = {
-  Nav: styled.nav`
+  Nav: styled(motion.nav)`
     background: transparent;
     position: fixed;
     z-index: 10000;
     width: 100%;
-    height: 8vh;
+    height: 9vh;
     transition: 200ms;
+
+    ${({ active }) =>
+      active &&
+      css`
+        background: var(--primary-blue);
+        & .overlay {
+          display: block;
+        }
+      `}
 
     > .container {
       height: 100%;
@@ -24,39 +34,13 @@ export const Nav = {
     }
 
     &.scrolled {
-      background: var(--light-blue);
-      height: 8vh;
-      box-shadow: 0 1rem 3rem -2rem rgba(0, 0, 0, 0.7);
-    }
-
-    @media (max-width: 767px) {
-      &::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        background: hsla(220, 80%, 45%, 0.5);
-        display: none;
-        animation: 500ms 300ms ease fade forwards;
-      }
-
-      ${({ overlay }) =>
-        overlay
-          ? css`
-              background: var(--light-blue);
-              &::after {
-                display: block;
-              }
-            `
-          : ""}
+      background: hsl(12deg 89% 59% / 93%);
+      height: 9vh;
+      box-shadow: 0 0.7rem 1rem rgb(0 0 0 / 15%);
     }
 
     @media (min-width: 768px) {
       height: 13vh;
-
-      &::after {
-        display: none;
-      }
     }
 
     button {
@@ -82,7 +66,7 @@ export const Nav = {
   List: styled.ul`
     list-style: none;
     position: fixed;
-    top: 8vh;
+    top: 9vh;
     right: 0;
     left: 0;
     text-align: center;
@@ -110,18 +94,18 @@ export const Nav = {
       flex: 1;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       transform: scaleX(1);
     }
   `,
 
   Item: styled.li``,
 
-  Link: styled.a`
+  Link: styled(motion.a)`
     display: inline-block;
     text-decoration: none;
     padding: 0.5em;
     font-size: 2.5rem;
-    font-weight: 500;
     color: var(--text-black-3);
     transition: 200ms;
     cursor: pointer;
@@ -131,13 +115,13 @@ export const Nav = {
     }
 
     @media (min-width: 768px) {
-      color: var(--text-white-1);
+      color: var(--text-white-3);
       font-weight: 400;
       font-size: 1.6rem;
       padding: 0.5em 0.8em;
 
       &:hover {
-        color: white;
+        color: var(--text-white-1);
       }
     }
   `,
@@ -170,6 +154,7 @@ export const Hero = {
     background-color: var(--primary-blue);
     padding-top: var(--padding);
     overflow: hidden;
+    perspective: 1000px;
 
     > .container {
       display: flex;
@@ -178,7 +163,7 @@ export const Hero = {
     }
   `,
 
-  Content: styled.div`
+  Content: styled(motion.div)`
     font-size: clamp(2rem, 2.3rem + 4vw, 6rem);
     text-align: center;
     flex: 1;
@@ -202,7 +187,7 @@ export const Hero = {
     margin: 2rem auto;
   `,
 
-  VideoContainer: styled.div`
+  VideoContainer: styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -228,17 +213,22 @@ export const Features = {
   Wrapper: styled.section`
     background: var(--bg-white-1);
     padding: 10rem 0;
+    perspective: 1000px;
 
     > .container {
     }
   `,
 
-  Content: styled.div`
+  Content: styled(motion.div)`
     text-align: center;
     margin-bottom: 5rem;
+
+    p {
+      margin-inline: auto;
+    }
   `,
 
-  TabsWrapper: styled.div`
+  TabsWrapper: styled(motion.div)`
     .tabs {
       display: flex;
       width: 100%;
@@ -252,7 +242,7 @@ export const Features = {
 
       @media (max-width: 650px) {
         box-shadow: none;
-        display: block;
+        flex-wrap: wrap;
       }
 
       .tab {
@@ -274,8 +264,7 @@ export const Features = {
         }
 
         @media (max-width: 650px) {
-          max-width: 300px;
-          box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.15);
+          border: 1px solid black;
 
           &,
           &:not(:last-child) {
@@ -615,18 +604,26 @@ export const Text = styled.p`
   color: ${({ color }) => color || "black"};
 `;
 
-export const Overlay = styled.div`
+export const Overlay = styled(motion.div)`
   @media (max-width: 768px) {
     position: fixed;
     inset: 0;
-    top: 10vh;
-    background: hsla(0, 0%, 100%, 0.7);
+    top: 0;
+    z-index: ${({ z }) => z};
+    background: linear-gradient(
+      to bottom,
+      hsla(220, 96%, 64%, 0.1),
+      hsla(220, 96%, 64%, 0.9) 40%
+    );
     display: none;
     opacity: 0;
     animation: fade 500ms ease forwards;
+    z-index: 100;
 
-    &.active {
-      display: block;
-    }
+    ${({ overlay }) =>
+      overlay &&
+      css`
+        display: block;
+      `}
   }
 `;

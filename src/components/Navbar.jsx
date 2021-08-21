@@ -1,21 +1,10 @@
 import React, { Component } from "react";
 
-import { Nav as N, Button, Overlay } from "./styles";
+import { Nav as N, Button } from "./styles";
 
 class Navbar extends Component {
   state = {
     active: false,
-  };
-
-  HandleNavActive = () => {
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      () => {
-        this.navRef.parentElement.parentElement.classList.toggle("no-scroll");
-      }
-    );
   };
 
   componentDidMount() {
@@ -32,6 +21,19 @@ class Navbar extends Component {
     window.removeEventListener("scroll", this.handleScroll);
   }
 
+  HandleNavActive = () => {
+    this.setState(
+      {
+        active: !this.state.active,
+      },
+      () => {
+        this.props.setIsOverlay(!this.props.isOverlay);
+        document.body.classList.toggle("no-scroll");
+      }
+    );
+  };
+
+  // Handle nav when scrolling
   handleScroll = (e) => {
     if (document.documentElement.scrollTop > 100) {
       this.navRef.classList.add("scrolled");
@@ -40,6 +42,7 @@ class Navbar extends Component {
     }
   };
 
+  // Close nav when clicking around it in small screen
   toggleNav = (e) => {
     if (!e.target.closest("nav") && this.state.active) {
       this.setState(
@@ -47,7 +50,8 @@ class Navbar extends Component {
           active: false,
         },
         () => {
-          this.navRef.parentElement.parentElement.classList.remove("no-scroll");
+          document.body.classList.remove("no-scroll");
+          this.props.setIsOverlay(false);
         }
       );
     }
@@ -56,21 +60,31 @@ class Navbar extends Component {
   render() {
     const { active } = this.state;
 
-    const { items, button } = this.props;
+    const { button } = this.props;
 
     return (
-      <N.Nav ref={(id) => (this.navRef = id)} overlay={active}>
+      <N.Nav
+        active={active}
+        ref={(id) => (this.navRef = id)}
+        initial={{ y: "-100%" }}
+        animate={{ y: 0 }}
+        transition={{ delay: 1, type: "tween" }}
+      >
         <div className="container">
           {/* Logo */}
           <N.Logo>playspace</N.Logo>
 
           {/* List  */}
           <N.List className={`${active ? "active" : ""}`}>
-            {items.map((item, i) => (
-              <N.Item key={i}>
-                <N.Link>{item}</N.Link>
-              </N.Item>
-            ))}
+            <N.Item>
+              <N.Link
+                initial={{ x: 20 }}
+                animate={{ x: 0 }}
+                transition={{ delay: 0.2, type: "tween" }}
+              >
+                Sign in
+              </N.Link>
+            </N.Item>
 
             {button ? <Button small>{button}</Button> : null}
           </N.List>

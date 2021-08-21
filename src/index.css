@@ -7,11 +7,12 @@
 
 html {
   font-size: 10px;
+  overflow-x: hidden;
 
-  --text-white-1: hsl(0, 0%, 98%);
-  --text-white-2: hsl(0, 0%, 94%);
+  --text-white-1: hsl(0, 0%, 100%);
+  --text-white-2: hsl(0, 0%, 93%);
   --text-white-3: hsl(0, 0%, 88%);
-  --text-white-3: hsl(0, 0%, 80%);
+  --text-white-4: hsl(0, 0%, 80%);
 
   --text-black-1: hsl(0, 0%, 5%);
   --text-black-2: hsl(0, 0%, 12%);

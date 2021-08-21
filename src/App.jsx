@@ -6,16 +6,26 @@ import Rooms from "./components/Rooms";
 import Ipad from "./components/Ipad";
 import Action from "./components/Action";
 import Footer from "./components/Footer";
-import { useEffect } from "react";
+import { Overlay } from "./components/styles";
+// import Modal from './components/Modal'
+import { useState } from "react";
 
 function App() {
-  const links = ["sign in"];
-
-
+  const [isOverlay, setIsOverlay] = useState(false);
 
   return (
     <>
-      <Navbar items={links} button="join the waitlist" />
+      <Overlay
+        className="overlay"
+        overlay={isOverlay}
+        // transition={{ delay: 0.5 }}
+      />
+
+      <Navbar
+        button="join the waitlist"
+        isOverlay={isOverlay}
+        setIsOverlay={setIsOverlay}
+      />
       <Hero />
       <Features />
       <Music />

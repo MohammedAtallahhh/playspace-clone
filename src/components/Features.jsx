@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useOnScreen } from "./useOnScreen";
 import { Features as F, Title, Text } from "./styles";
 
 // import notepad from "../assets/notepad_video.mp4";
@@ -6,9 +7,15 @@ import window from "../assets/window.png";
 import screenshare from "../assets/screenshare.png";
 import whiteboard from "../assets/whiteboard.png";
 import float from "../assets/float.png";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 function Features() {
   const [active, setActive] = useState(0);
+  const contentRef = useRef();
+  let isContent = useOnScreen(contentRef);
+  let isTabs = useOnScreen(contentRef, "-200px");
+  let isImage = useOnScreen(contentRef, "-300px");
 
   const handleActiveTab = (e, i) => {
     setActive(i);
@@ -24,7 +31,13 @@ function Features() {
   return (
     <F.Wrapper>
       <div className="container">
-        <F.Content className="content">
+        <F.Content
+          ref={contentRef}
+          initial={{ x: 200, opacity: 0 }}
+          animate={isContent ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 1 }}
+          className="content"
+        >
           <Title color="var(--text-black-1)">Get on the same page, fast.</Title>
 
           <Text color="var(--text-black-3)">
@@ -34,7 +47,12 @@ function Features() {
         </F.Content>
 
         <F.TabsWrapper>
-          <ul className="tabs">
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={isTabs ? { opacity: 1 } : null}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="tabs"
+          >
             {Tabs.map((tab, i) => (
               <li
                 onClick={(e) => handleActiveTab(e, i)}
@@ -44,9 +62,14 @@ function Features() {
                 {tab.text}
               </li>
             ))}
-          </ul>
+          </motion.ul>
 
-          <div className="tabs__content">
+          <motion.div
+            className="tabs__content"
+            initial={{ opacity: 0, y: -30, z: 50 }}
+            animate={isImage ? { opacity: 1, y: 0, z: 0 } : null}
+            transition={{ duration: 1, type: "tween" }}
+          >
             {Tabs.map((tab, i) => (
               <div
                 className={`content ${i === active ? "active" : ""}`}
@@ -55,7 +78,7 @@ function Features() {
                 <img loading="lazy" src={tab.img} alt={tab.img} />
               </div>
             ))}
-          </div>
+          </motion.div>
         </F.TabsWrapper>
       </div>
     </F.Wrapper>
