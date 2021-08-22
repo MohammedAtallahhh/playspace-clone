@@ -66,9 +66,9 @@ class Navbar extends Component {
       <N.Nav
         active={active}
         ref={(id) => (this.navRef = id)}
-        initial={{ y: "-100%" }}
+        initial={{ y: "-200%" }}
         animate={{ y: 0 }}
-        transition={{ delay: 1, type: "tween" }}
+        transition={{ duration: 1, delay: 0.5, type: "tween" }}
       >
         <div className="container">
           {/* Logo */}

@@ -9,17 +9,20 @@ import Footer from "./components/Footer";
 import { Overlay } from "./components/styles";
 // import Modal from './components/Modal'
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [isOverlay, setIsOverlay] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log("loaded");
+    setLoading(false);
+  }, []);
 
   return (
     <>
-      <Overlay
-        className="overlay"
-        overlay={isOverlay}
-        // transition={{ delay: 0.5 }}
-      />
+      <Overlay className="overlay" overlay={isOverlay} />
 
       <Navbar
         button="join the waitlist"

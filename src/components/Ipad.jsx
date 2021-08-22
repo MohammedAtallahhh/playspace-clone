@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Ipad as I, Title, Text } from "./styles";
+import { motion } from "framer-motion";
+import { useOnScreen } from "./useOnScreen";
 
 function Ipad() {
+  const rootRef = useRef();
+  const isContent = useOnScreen(rootRef, [0.5]);
+
   return (
-    <I.Wrapper>
+    <I.Wrapper ref={rootRef}>
       {/* content  */}
-      <div className="content">
+      <motion.div
+        initial={{ x: "100%", opacity: 0 }}
+        animate={isContent ? { x: 0, opacity: 1 } : {}}
+        transition={{ duration: 1 }}
+        className="content"
+      >
         <div className="content-inner">
           <Title color="var(--text-black-1)">Grab a pencil.</Title>
 
@@ -14,10 +24,15 @@ function Ipad() {
             and sketch in real-time.
           </Text>
         </div>
-      </div>
+      </motion.div>
 
       {/* Image */}
-      <div className="image"></div>
+      <motion.div
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={isContent ? { x: 0, opacity: 1 } : {}}
+        transition={{ duration: 1 }}
+        className="image"
+      ></motion.div>
     </I.Wrapper>
   );
 }

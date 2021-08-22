@@ -12,10 +12,10 @@ import { useRef } from "react";
 
 function Features() {
   const [active, setActive] = useState(0);
-  const contentRef = useRef();
-  let isContent = useOnScreen(contentRef);
-  let isTabs = useOnScreen(contentRef, "-200px");
-  let isImage = useOnScreen(contentRef, "-300px");
+  const rootRef = useRef();
+  let isContent = useOnScreen(rootRef, [0.2]);
+  let isTabs = useOnScreen(rootRef, [0.4]);
+  let isImage = useOnScreen(rootRef, [0.7]);
 
   const handleActiveTab = (e, i) => {
     setActive(i);
@@ -30,9 +30,8 @@ function Features() {
 
   return (
     <F.Wrapper>
-      <div className="container">
+      <div ref={rootRef} className="container">
         <F.Content
-          ref={contentRef}
           initial={{ x: 200, opacity: 0 }}
           animate={isContent ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 1 }}

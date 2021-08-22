@@ -22,8 +22,8 @@ function Hero() {
         </H.Content>
 
         <H.VideoContainer
-          initial={{ z: 50, y: -50, opacity: 0 }}
-          animate={{ z: 0, y: 0, opacity: 1 }}
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
           <H.Video muted autoPlay loop>

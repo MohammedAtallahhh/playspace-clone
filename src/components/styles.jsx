@@ -470,7 +470,7 @@ export const Ipad = {
 export const Action = {
   Wrapper: styled.section`
     background: var(--primary-blue);
-    padding: 20rem 0;
+    padding: 15rem 0;
 
     @media (min-width: 600px) {
       &::after {
